@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task and Notes Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script async defer src="onload.js"></script>
+    <script async defer src="taskService.js"></script>
+    <script async defer src="notesService.js"></script>
+    <script async defer src="sorting.js"></script>
+    
+</head>
+<body>
+      <div id="addTask">
+        <br>
+        <div id="taskForm">
+            <h3 align="center">Fill these details to add any task</h3>
+            <form action="javascript:;" onsubmit="addTask(this)">
+                Title: <input type="text" id="title" placeholder="Enter title" required>
+                <br><br>
+                Description: <input type="text" id="description" placeholder="Enter description">
+                <br><br>
+                Due Date: <input id="tomorrow" type="date" required>
+                <br><br>
+                Priority: <select id="priority">
+                    <option>Low</option>
+                    <option selected>Medium</option>
+                    <option>High</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+          </div>
+      </div>
+      <div>
+        <h1 align="center">Tasks List</h1>
+          <div class="container">
+              <table id="data" style="width:100%">
+              <thead>
+                <tr>
+                  <th scope="col" width=30%>Title</th>
+                  <th scope="col" width=40%>Description</th>
+                  <th scope="col" width=10% onclick="sortTable(2)" style="cursor: pointer; text-decoration: underline;">Due Date</th>
+                  <th scope="col" width=10% onclick="sortTable(3)" style="cursor: pointer; text-decoration: underline;">Status</th>
+                  <th scope="col" width=10% onclick="sortTable(4)" style="cursor: pointer; text-decoration: underline;">Priority</th>
+                  <th scope="col" width=20%>Notes</th>
+                  <th scope="col" width=15%>Edit</th>
+                </tr>
+              </thead>
+              <Br><Br>
+            </table>
+          </div>
+        </div>
+
+        <div id="id01">
+              <header> 
+                <span onclick="document.getElementById('id01').style.display='none'">&times;</span>
+                <h2 id="modalHeader"></h2>
+              </header>
+              <div id="notesModalBody">
+                <br>
+                <p id="modalContent" style="display: none;">No notes present for this task</p>
+                <ul id="notesList"></ul>
+                <input type="text" id="noteText" placeholder="Enter new note here...">
+                <br><br>
+              </div>
+              <footer>
+                <input type="button" id="addNotes" onclick="addNotes()" value="Add note">
+              </footer>
+            </div>
+          </div>
+        </div>
+
+        <div id="id02">
+            <header> 
+              <span onclick="document.getElementById('id02').style.display='none'">&times;</span>
+              <h2 id="modalHeader2"></h2>
+            </header>
+            <div>
+              <br>
+              <form action="javascript:;" onsubmit="updateTask(this)">
+                Due Date: <input type="date" required id="editDueDate">
+                <br><br>
+                Priority: <select id="editPriority">
+                  <option>Low</option>
+                  <option selected>Medium</option>
+                  <option>High</option>
+                </select>
+                <br><br>
+                <input type="checkbox" id="editStatus"> Check if task is completed
+                <br><br>
+              <footer>
+                <input type="submit" value="Update">
+              </footer>
+            </form>
+        </div>
+      </div>
+</body>
+</html>
